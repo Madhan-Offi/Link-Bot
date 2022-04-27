@@ -22,20 +22,29 @@ class IsPrivate(BoundFilter):
 
 @bot.message_handler(IsPrivate(), Command("start", prefixes="/"))
 async def start(message):
-    await message.answer("Send gplink to get direct link!")
-
+    await message.answer("hiii.\n Send gplink to get direct link!")
+    
+    
+@bot.message_handler(IsPrivate(), Command("help", prefixes="/"))
+async def help(message):
+    await message.answer("""
+    * support GP LINKS only
+    * you can convert GDtot links from @JNS_MIRROR group
+    * don't spam it by adding multiple taks to bot
+    * give task one by one otherwise you will get ban 
+    """)
 
 @bot.message_handler(IsPrivate())
 async def gp(message):
     if not message.text.startswith("https://gplinks") or message.text.startswith("gplinks"):
        await message.answer("Sorry, all I do is scrape GPLinks URLs :(")
        return
-    m = await message.answer("Please wait...")
+    m = await message.answer("Please wait... don't give another tasks now")
     link = get_link(message.text)
     await m.delete()
     if not link:      
        await message.answer("Something went wrong\nTry again later..")
     else:
-       await message.answer(f"Here is your direct link:\n\n{link}", disable_web_page_preview=True)
+       await message.answer(f"Here is your direct link:\n\n{link}\n\n convert it in @jns_nirror", disable_web_page_preview=True)
     
 executor.start_polling(bot)
