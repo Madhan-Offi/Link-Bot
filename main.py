@@ -22,12 +22,12 @@ class IsPrivate(BoundFilter):
 
 @bot.message_handler(IsPrivate(), Command("start", prefixes="/"))
 async def start(message):
-    await message.answer("hiii.\n\nSend gplink to get direct link!")
+    await message.answer("Hi.\n\nSend gplink to get direct link!")
     
     
 @bot.message_handler(IsPrivate(), Command("help", prefixes="/"))
 async def help(message):
-    await message.answer("""* support GP LINKS only\n* you can convert GDtot links from @JNS_MIRROR group\n* don't spam it by adding multiple taks to bot\n* give task one by one otherwise you will get ban 
+    await message.answer("""* Support GP LINKS Only\n* you can convert GDtot links from @TamilPrime_LinkZz group\n* don't spam it by adding multiple taks to bot\n* give task one by one otherwise you will get ban 
     """)
 
 @bot.message_handler(IsPrivate())
@@ -41,6 +41,6 @@ async def gp(message):
     if not link:      
        await message.answer("Something went wrong\nTry again later..")
     else:
-       await message.answer(f"Here is your direct link:\n\n{link}\n\n convert it in @jns_mirror", disable_web_page_preview=True)
+       await message.answer(f"Here is your direct link:\n\n{link}\n\n Join @TamilPrime_LinkZz", disable_web_page_preview=True)
     
 executor.start_polling(bot)
