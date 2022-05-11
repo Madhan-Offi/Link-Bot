@@ -8,7 +8,7 @@ import os
 from aiogram import Bot, Dispatcher, types, executor
 from aiogram.dispatcher.filters import BoundFilter, Command
 from gplink import get_link
-from dropLink import get link
+from dropLink import get_link
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
