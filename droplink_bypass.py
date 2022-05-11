@@ -1,3 +1,4 @@
+
 import re
 import time
 import requests
@@ -5,6 +6,11 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 
+# droplink url
+url = ""
+
+# ==============================================
+    
 def droplink_bypass(url):
     client = requests.Session()
     res = client.get(url)
@@ -19,7 +25,7 @@ def droplink_bypass(url):
     data = { input.get('name'): input.get('value') for input in inputs }
 
     h = {
-        'content-type': 'application/x-www-form-urlencoded',                        
+        'content-type': 'application/x-www-form-urlencoded',
         'x-requested-with': 'XMLHttpRequest'
     }
     p = urlparse(url)
@@ -29,3 +35,7 @@ def droplink_bypass(url):
     res = client.post(final_url, data=data, headers=h).json()
 
     return res
+
+# ==============================================
+
+print(droplink_bypass(url))
