@@ -8,6 +8,7 @@ import os
 from aiogram import Bot, Dispatcher, types, executor
 from aiogram.dispatcher.filters import BoundFilter, Command
 from gplink import get_link
+from dropLink import get link
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
@@ -34,6 +35,19 @@ async def help(message):
 async def gp(message):
     if not message.text.startswith("https://gplinks") or message.text.startswith("gplinks"):
        await message.answer("Sorry, all I do is scrape GPLinks URLs :(")
+       return
+    m = await message.answer("Please wait... don't give another tasks now")
+    link = get_link(message.text)
+    await m.delete()
+    if not link:      
+       await message.answer("Something went wrong\nTry again later..")
+    else:
+       await message.answer(f"Here is your direct link:\n\n{link}\n\n Join @TamilPrime_LinkZz", disable_web_page_preview=True)
+    
+@bot.message_handler(IsPrivate())
+async def drop(message):
+    if not message.text.startswith("https://droplink") or message.text.startswith("droplink"):
+       await message.answer("Sorry, all I do is scrape DropLinks URLs :(")
        return
     m = await message.answer("Please wait... don't give another tasks now")
     link = get_link(message.text)
